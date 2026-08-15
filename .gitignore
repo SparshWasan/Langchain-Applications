@@ -1,2 +1,5 @@
 #Enviroment Variables
 .env
+
+#test Jupyter Notebook
+modeltest.ipynb
