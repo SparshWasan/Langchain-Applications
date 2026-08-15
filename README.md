@@ -30,7 +30,7 @@ An AI-powered travel recommendation assistant demonstrating model comparison and
   - Multi-provider LLM inference in parallel workflows:
     - **Google GenAI**: `gemini-2.5-flash`
     - **Groq**: `llama-3.3-70b-versatile`
-    - **OpenAI**: `gpt-4`
+    - **OpenAI**: `gpt-5.4-mini`
   - Demonstrates response variation and speed across top frontier and open-weight models.
 
 ---
