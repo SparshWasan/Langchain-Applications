@@ -6,6 +6,7 @@ import os
 load_dotenv()
 gemini_api_key = os.getenv('GEMINI_API_KEY')
 groq_api_key = os.getenv('GROQ_API_KEY')
+openai_api_key = os.getenv('OPENAI_API_KEY')
 
 system_msg = SystemMessage("You are a travel guide who gives brief recommendations for tourist destinations.")
 human_msg = HumanMessage("Suggest top 3 places to visit in Japan.")
@@ -22,8 +23,15 @@ model2 = init_chat_model(
     api_key=groq_api_key
 )
 
+model3 = init_chat_model(
+    "openai:gpt-5.4-mini",
+    api_key=openai_api_key
+)
 response1 = model1.invoke(messages)
 print("Response from Gemini:\n", response1.content)
 
 response2 = model2.invoke(messages)
 print("\nResponse from Groq:\n", response2.content)
+
+response3 = model3.invoke(messages)
+print("\nResponse from OpenAI:\n", response3.content)

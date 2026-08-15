@@ -30,6 +30,7 @@ An AI-powered travel recommendation assistant demonstrating model comparison and
   - Multi-provider LLM inference in parallel workflows:
     - **Google GenAI**: `gemini-2.5-flash`
     - **Groq**: `llama-3.3-70b-versatile`
+    - **OpenAI**: `gpt-4`
   - Demonstrates response variation and speed across top frontier and open-weight models.
 
 ---
@@ -70,12 +71,14 @@ Create a `.env` file in the root directory (refer to `.env.example`):
 ```env
 GEMINI_API_KEY=your_gemini_api_key_here
 GROQ_API_KEY=your_groq_api_key_here
+OPENAI_API_KEY=your_openai_api_key_here
 ```
 
 > [!TIP]
 >
 > - Get a Google Gemini API Key from [Google AI Studio](https://aistudio.google.com/).
 > - Get a Groq API Key from the [Groq Console](https://console.groq.com/).
+> - Get a OpenAI API Key from the [OpenAI Console](https://platform.openai.com/account/api-keys).
 
 ---
 
@@ -108,6 +111,7 @@ Response from Groq:
 - **LLM Providers**:
   - [Google Gemini API](https://ai.google.dev/) (`google_genai`)
   - [Groq Cloud](https://groq.com/) (`groq`)
+  - [Open AI](https://openai.com/) (`openai`)
 - **Environment Management**: `python-dotenv`
 - **Language**: Python 3.10+
 
