@@ -10,7 +10,9 @@ A repository containing hands-on practice projects, implementations, and experim
 Langchain Applications/
 │
 ├── Travel Guide Assistant/
-│   └── app.py               # Multi-LLM Travel recommendation assistant (Gemini & Groq)
+│   └── app.py               # Multi-LLM Travel recommendation assistant (Gemini, Groq, OpenAI)
+├── Python Tutor Assistant/
+│   └── app.py               # Python concept tutor assistant (Groq LLaMA-3.3)
 │
 ├── .env.example             # Example environment variables template
 ├── .gitignore               # Ignored files (virtual environments, keys, .env)
@@ -32,6 +34,14 @@ An AI-powered travel recommendation assistant demonstrating model comparison and
     - **Groq**: `llama-3.3-70b-versatile`
     - **OpenAI**: `gpt-5.4-mini`
   - Demonstrates response variation and speed across top frontier and open-weight models.
+
+### 2. 🐍 Python Tutor Assistant
+
+An interactive AI programming tutor designed to explain Python programming concepts with clear, concise code examples.
+
+- **Features**:
+  - Role-based system prompting configured for educational code explanations.
+  - Fast inference powered by **Groq** (`llama-3.3-70b-versatile`).
 
 ---
 
@@ -78,32 +88,15 @@ OPENAI_API_KEY=your_openai_api_key_here
 >
 > - Get a Google Gemini API Key from [Google AI Studio](https://aistudio.google.com/).
 > - Get a Groq API Key from the [Groq Console](https://console.groq.com/).
-> - Get a OpenAI API Key from the [OpenAI Console](https://platform.openai.com/account/api-keys).
+> - Get an OpenAI API Key from the [OpenAI Console](https://platform.openai.com/account/api-keys).
 
 ---
 
 ## 🏃 Running Applications
 
-### Run Travel Guide Assistant
-
 ```bash
 python "Travel Guide Assistant/app.py"
 ```
-
-#### Example Output:
-
-```text
-Response from Gemini:
- Here are my top 3 recommendations for Japan:
-1. Tokyo: Dive into a vibrant metropolis where ancient temples meet futuristic skyscrapers...
-2. Kyoto: Experience traditional Japan with thousands of classical Buddhist temples...
-3. Osaka: Renowned for its modern architecture, nightlife and hearty street food...
-
-Response from Groq:
- Japan. A country steeped in tradition, rich in culture, and vibrant with modern life...
-```
-
----
 
 ## 🧰 Tech Stack
 
@@ -111,7 +104,7 @@ Response from Groq:
 - **LLM Providers**:
   - [Google Gemini API](https://ai.google.dev/) (`google_genai`)
   - [Groq Cloud](https://groq.com/) (`groq`)
-  - [Open AI](https://openai.com/) (`openai`)
+  - [OpenAI](https://openai.com/) (`openai`)
 - **Environment Management**: `python-dotenv`
 - **Language**: Python 3.10+
 
