@@ -1,6 +1,6 @@
 # 🦜🔗 LangChain Applications Practice
 
-A repository containing hands-on practice projects, implementations, and experiments built with **LangChain**, exploring multi-provider LLM integrations, prompt structuring, and generative AI application workflows.
+A repository containing hands-on practice projects, implementations, and experiments built with **LangChain**, exploring multi-provider LLM integrations, prompt structuring, document processing, and generative AI application workflows.
 
 ---
 
@@ -10,13 +10,16 @@ A repository containing hands-on practice projects, implementations, and experim
 Langchain Applications/
 │
 ├── Travel Guide Assistant/
-│   └── app.py               # Multi-LLM Travel recommendation assistant (Gemini, Groq, OpenAI)
+│   └── app.py                         # Multi-LLM Travel recommendation assistant (Gemini, Groq, OpenAI)
 ├── Python Tutor Assistant/
-│   └── app.py               # Python concept tutor assistant (Groq LLaMA-3.3)
+│   └── app.py                         # Python concept tutor assistant (Groq LLaMA-3.3)
+├── PDF Content Previewer/
+│   ├── app.py                         # PDF content previewer using PyPDFLoader
+│   └── attention_is_all_you_need.pdf  # Sample research paper document
 │
-├── .env.example             # Example environment variables template
-├── .gitignore               # Ignored files (virtual environments, keys, .env)
-└── README.md                # Project documentation
+├── .env.example                       # Example environment variables template
+├── .gitignore                         # Ignored files (virtual environments, keys, .env)
+└── README.md                          # Project documentation
 ```
 
 ---
@@ -29,11 +32,13 @@ An AI-powered travel recommendation assistant demonstrating model comparison and
 
 - **Features**:
   - Leverages `SystemMessage` for persona roleplay and `HumanMessage` for prompt formulation.
-  - Multi-provider LLM inference in parallel workflows:
+  - Multi-provider LLM inference across top frontier and open-weight models:
     - **Google GenAI**: `gemini-2.5-flash`
     - **Groq**: `llama-3.3-70b-versatile`
     - **OpenAI**: `gpt-5.4-mini`
-  - Demonstrates response variation and speed across top frontier and open-weight models.
+  - Demonstrates response variation, formatting differences, and output generation across providers.
+
+---
 
 ### 2. 🐍 Python Tutor Assistant
 
@@ -42,6 +47,17 @@ An interactive AI programming tutor designed to explain Python programming conce
 - **Features**:
   - Role-based system prompting configured for educational code explanations.
   - Fast inference powered by **Groq** (`llama-3.3-70b-versatile`).
+
+---
+
+### 3. 📄 PDF Content Previewer
+
+A PDF content previewer that extracts and displays the text content and metadata of a PDF document.
+
+- **Features**:
+  - Extracts content from local PDF files using `PyPDFLoader`.
+  - Displays document metadata and page content.
+  - No external LLM API keys required for document extraction.
 
 ---
 
@@ -68,10 +84,10 @@ source venv/bin/activate
 
 ### 3. Install Dependencies
 
-Install the required packages using pip:
+Install the core LangChain library, provider integrations, and document loader dependencies:
 
 ```bash
-pip install langchain langchain-[llm_provider_name] python-dotenv
+pip install langchain langchain-[llm_provider_name] python-dotenv langchain-community pypdf
 ```
 
 ### 4. Configure API Keys
@@ -88,23 +104,35 @@ OPENAI_API_KEY=your_openai_api_key_here
 >
 > - Get a Google Gemini API Key from [Google AI Studio](https://aistudio.google.com/).
 > - Get a Groq API Key from the [Groq Console](https://console.groq.com/).
-> - Get an OpenAI API Key from the [OpenAI Console](https://platform.openai.com/account/api-keys).
+> - Get an OpenAI API Key from the [OpenAI Platform](https://platform.openai.com/api-keys).
 
 ---
 
 ## 🏃 Running Applications
 
+Make sure to run the scripts from the repository root directory:
+
 ```bash
+# 1. Travel Guide Assistant
 python "Travel Guide Assistant/app.py"
+
+# 2. Python Tutor Assistant
+python "Python Tutor Assistant/app.py"
+
+# 3. PDF Content Previewer
+python "PDF Content Previewer/app.py"
 ```
+
+---
 
 ## 🧰 Tech Stack
 
-- **Framework**: [LangChain](https://www.langchain.com/)
+- **Framework**: [LangChain](https://www.langchain.com/) (`langchain`, `langchain-community`)
+- **Document Loaders**: `pypdf`
 - **LLM Providers**:
-  - [Google Gemini API](https://ai.google.dev/) (`google_genai`)
-  - [Groq Cloud](https://groq.com/) (`groq`)
-  - [OpenAI](https://openai.com/) (`openai`)
+  - [Google Gemini API](https://ai.google.dev/) (`langchain-google-genai`)
+  - [Groq Cloud](https://groq.com/) (`langchain-groq`)
+  - [OpenAI](https://openai.com/) (`langchain-openai`)
 - **Environment Management**: `python-dotenv`
 - **Language**: Python 3.10+
 
