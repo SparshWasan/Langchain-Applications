@@ -1,6 +1,6 @@
 # 🦜🔗 LangChain Applications Practice
 
-A repository containing hands-on practice projects, implementations, and experiments built with **LangChain**, exploring multi-provider LLM integrations, prompt structuring, document processing, and generative AI application workflows.
+A repository containing hands-on practice projects, implementations, and experiments built with **LangChain**, exploring multi-provider LLM integrations, prompt structuring, document processing, text splitters, and generative AI application workflows.
 
 ---
 
@@ -14,9 +14,13 @@ Langchain Applications/
 ├── Python Tutor Assistant/
 │   └── app.py                         # Python concept tutor assistant (Groq LLaMA-3.3)
 ├── PDF Content Previewer/
-│   ├── app.py                         # PDF content previewer using PyPDFLoader
-│   └── attention_is_all_you_need.pdf  # Sample research paper document
-│
+│   └── app.py                         # PDF content previewer using PyPDFLoader
+├── PDF Document Splitter/
+│   └── app.py                         # PDF document chunking with RecursiveCharacterTextSplitter
+├── Python Code Splitter/
+│   ├── app.py                         # Language-aware Python code splitter using RecursiveCharacterTextSplitter
+│   └── tool_calling.py                # Sample Code for Code splitting
+├── attention_is_all_you_need.pdf      # Sample research paper document for PDF loaders & splitters
 ├── .env.example                       # Example environment variables template
 ├── .gitignore                         # Ignored files (virtual environments, keys, .env)
 └── README.md                          # Project documentation
@@ -52,12 +56,34 @@ An interactive AI programming tutor designed to explain Python programming conce
 
 ### 3. 📄 PDF Content Previewer
 
-A PDF content previewer that extracts and displays the text content and metadata of a PDF document.
+A PDF content previewer that extracts and displays the raw text content and metadata of a PDF document.
 
 - **Features**:
   - Extracts content from local PDF files using `PyPDFLoader`.
   - Displays document metadata and page content.
   - No external LLM API keys required for document extraction.
+
+---
+
+### 4. 📑 PDF Document Splitter
+
+A document chunking pipeline for PDF documents using LangChain's text splitting utilities.
+
+- **Features**:
+  - Loads PDF documents with `PyPDFLoader`.
+  - Splits documents into manageable chunks using `RecursiveCharacterTextSplitter` (chunk size: 1000, overlap: 200).
+  - Preserves document metadata across chunk splits.
+
+---
+
+### 5. 💻 Python Code Splitter & Tool Calling
+
+Language-aware code parsing and function-calling implementations.
+
+- **Features**:
+  - **Python Code Splitting (`app.py`)**:
+    - Loads Python source files using `TextLoader`.
+    - Employs `RecursiveCharacterTextSplitter.from_language(Language.PYTHON)` for syntax-aware code chunking (chunk size: 500, overlap: 50).
 
 ---
 
@@ -101,7 +127,6 @@ OPENAI_API_KEY=your_openai_api_key_here
 ```
 
 > [!TIP]
->
 > - Get a Google Gemini API Key from [Google AI Studio](https://aistudio.google.com/).
 > - Get a Groq API Key from the [Groq Console](https://console.groq.com/).
 > - Get an OpenAI API Key from the [OpenAI Platform](https://platform.openai.com/api-keys).
@@ -121,15 +146,22 @@ python "Python Tutor Assistant/app.py"
 
 # 3. PDF Content Previewer
 python "PDF Content Previewer/app.py"
+
+# 4. PDF Document Splitter
+python "PDF Document Splitter/app.py"
+
+# 5. Python Code Splitter
+python "Python Code Splitter/app.py"
 ```
 
 ---
 
 ## 🧰 Tech Stack
 
-- **Framework**: [LangChain](https://www.langchain.com/) (`langchain`, `langchain-community`)
-- **Document Loaders**: `pypdf`
-- **LLM Providers**:
+- **Frameworks & Libraries**: [LangChain](https://www.langchain.com/) (`langchain`, `langchain-community`, `langchain-text-splitters`)
+- **Document & Code Loaders**: `PyPDFLoader`, `TextLoader`
+- **Text Splitters**: `RecursiveCharacterTextSplitter` (with Python language syntax awareness)
+- **LLM Providers & SDKs**:
   - [Google Gemini API](https://ai.google.dev/) (`langchain-google-genai`)
   - [Groq Cloud](https://groq.com/) (`langchain-groq`)
   - [OpenAI](https://openai.com/) (`langchain-openai`)
