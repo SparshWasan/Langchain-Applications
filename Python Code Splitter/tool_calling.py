@@ -12,7 +12,7 @@ client = Groq(
 
 def get_weather(location):
    """Get weather for any city"""
-   api_key = "8e7e6be936642d0c8454f4ba99a1d8d9"
+   api_key = os.getenv("WEATHER_API_KEY")
    url = f"http://api.openweathermap.org/data/2.5/weather?q={location}&units=metric&appid={api_key}"
 
    response = requests.get(url)
